@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교재 실습 메인 페이지 (새 창 링크 연동)</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Varela+Round&display=swap');
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 초기화 및 공통 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* <a> 태그 기본 밑줄 및 색상 초기화 (교재 8385.jpg 내용 유지) */
+        a, a:link, a:visited {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block; /* 클릭 영역 확보 */
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /* container 클래스 기본 정의 */
+        .container {
+            width: 1140px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* ========================================= */
+        /* 헤더 영역 스타일 (8395.jpg 개선 반영) */
+        /* ========================================= */
+        header {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: white; 
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px; 
+        }
+
+        header nav ul {
+            display: flex;
+        }
+
+        header nav ul li {
+            padding: 10px;
+        }
+
+        /* 헤더 로고 버튼 및 네비게이션 스타일 */
+        header button.logo-btn {
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* <a> 태그 메뉴 글자 크기 및 스타일 설정 */
+        header nav ul li a {
+            font-size: 1.2rem;
+            color: white; 
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s;
+        }
+
+        /* 메뉴에 마우스 올렸을 때 효과 (선택 사항) */
+        header nav ul li a:hover {
+            color: #f1c40f; 
+        }
+
+        /* ========================================= */
+        /* 메인 영역 스타일 */
+        /* ========================================= */
+        main {
+            width: 100%;
+            height: 100vh;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/me.jpg') center center, #222;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        main h4 {
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        main h2 {
+            font-size: 3.5rem;
+            margin: 2rem 0;
+            letter-spacing: 3px;
+            font-family: "Varela Round", sans-serif;
+        }
+
+        main p {
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        main button.download {
+            background-color: transparent;
+            border: 3px solid white;
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            margin-top: 3rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        main button.download:hover {
+            background-color: white;
+            color: black;
+        }
+
+        main button.mouse {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: upDown 1s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        /* 텍스트 타이핑 커서 효과 */
+        main h2 span::after {
+            content: "";
+            height: 40px;
+            width: 3px;
+            background-color: #fff;
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: blink .7s ease-in-out infinite;
+        }
+
+        @keyframes upDown {
+            0% { bottom: 1rem; }
+            50% { bottom: 1.5rem; }
+            100% { bottom: 1rem; }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+        <div class="container">
+            <h1><button class="logo-btn" onclick="location.reload()">SUK</button></h1>
+            <nav>
+                <ul>
+                    <li><a href="t1.css" target="_blank">About</a></li>
+                    <li><a href="t2.css" target="_blank">Features</a></li>
+                    <li><a href="t3.css" target="_blank">Portfolio</a></li>
+                    <li><a href="t4.css" target="_blank">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="container">
+            <h4>Welcome</h4>
+            <h2>I'M A <span id="typing-text"></span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolor quas nulla unde ea officiis?</p>
+            <button class="download">DOWNLOAD CV</button>
+            <button class="mouse"><i class="fa-solid fa-computer-mouse"></i></button>
+        </div>
+    </main>
+
+    <script>
+        const txtArray = ["Front-End Developer", "Web Designer", "Publisher"];
+        let count = 0;
+        let index = 0;
+        let isBacking = false;
+        const target = document.getElementById("typing-text");
+
+        function playTyping() {
+            let currentTxt = txtArray[count];
+            
+            if (isBacking) {
+                target.textContent = currentTxt.substring(0, index - 1);
+                index--;
+            } else {
+                target.textContent = currentTxt.substring(0, index + 1);
+                index++;
+            }
+
+            let speed = isBacking ? 50 : 150;
+
+            if (!isBacking && index === currentTxt.length) {
+                speed = 2000; 
+                isBacking = true;
+            } else if (isBacking && index === 0) {
+                isBacking = false;
+                count = (count + 1) % txtArray.length; 
+                speed = 500;
+            }
+
+            setTimeout(playTyping, speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", playTyping);
+    </script>
+</body>
+</html>
